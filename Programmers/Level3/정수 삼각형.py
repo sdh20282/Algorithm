@@ -1,6 +1,6 @@
 def solution(triangle):
     now_stage = triangle[0]
-
+ 
     for stage in range(1, len(triangle)):
         sum_stage = [0 for _ in range(stage + 1)]
 
