@@ -31,7 +31,7 @@ def solution(n, edge):
         if lengths[now] > length:
             lengths[now] = length
 
-        ways = vertex.get(now)
+        ways = vertex.get(now) 
 
         for way in ways:
             q.append([way, length + 1])
