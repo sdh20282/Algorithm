@@ -1,6 +1,5 @@
 import heapq
 
-
 def solution(jobs):
     jobs.sort(key=lambda x: x[0])
     required_times = {}
