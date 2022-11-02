@@ -8,13 +8,12 @@ def solution(records):
         if rec[0] != 'Leave':
             nicknames[rec[1]] = rec[2]
 
-        if rec[0] == 'Enter':
-            answer.append([rec[1], '님이 들어왔습니다.'])
-        elif rec[0] == 'Leave':
-            answer.append([rec[1], '님이 나갔습니다.'])
+    for record in records:
+        record = record.split(' ')
 
-    for i in range(len(answer)):
-        answer[i][0] = nicknames[answer[i][0]]
-        answer[i] = ''.join(answer[i])
+        if record[0] == 'Enter':
+            answer.append(nicknames[record[1]] + '님이 들어왔습니다.')
+        elif record[0] == 'Leave':
+            answer.append(nicknames[record[1]] + '님이 나갔습니다.')
 
     return answer
