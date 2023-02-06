@@ -5,10 +5,11 @@ function solution(n) {
     
     for(let i = 2; i < n; i++){
         if ((pibo[i-1] + pibo[i-2]) > 1000000007) {
-            pibo[i] = (pibo[i-1] + pibo[i-2]) % 1000000007
-        } else {
-            pibo[i] = (pibo[i-1] + pibo[i-2])
+            pibo[i] = (pibo[i-1] + pibo[i-2]) % 1000000007;
+            continue;
         }
+        
+        pibo[i] = (pibo[i-1] + pibo[i-2])
     }
     
     return pibo[n-1];
