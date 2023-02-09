@@ -24,13 +24,13 @@ public class Main {
 		for (int i = 1; i < 10; i += 2) {
 			int next = Integer.parseInt("" + number + i);
 			
-			if (isPrimary(next)) {
+			if (isPrime(next)) {
 				dfs(next, count + 1);
 			}
 		}
 	}
 	
-	static boolean isPrimary(int number) {
+	static boolean isPrime(int number) {
 		int scope = (int)Math.sqrt(number);
 		
 		for (int i = 3; i <= scope; i += 2) {
