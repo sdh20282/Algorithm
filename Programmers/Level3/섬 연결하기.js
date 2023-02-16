@@ -55,7 +55,7 @@ function solution(n, costs) {
             continue;
         }
 
-        union[nodes[1]] = nodes[0];
+        union[nodes[1]] = cost[0];
         sum += cost[2];
     }
 
