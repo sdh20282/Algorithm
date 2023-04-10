@@ -6,20 +6,13 @@ import java.util.Collections;
 import java.util.StringTokenizer;
 
 public class Solution {
-	static final int M = 1, W = 2, D = 3, C = 4;
-
 	static class Person implements Comparable<Person> {
-		int r, c, arrivalTime, downCnt, status;
+		int r, c, arrivalTime;
 
 		public Person(int r, int c) {
 			super();
 			this.r = r;
 			this.c = c;
-		}
-
-		public void init() {
-			this.arrivalTime = this.downCnt = 0;
-			this.status = M;
 		}
 
 		@Override
@@ -94,7 +87,6 @@ public class Solution {
 		
 		for (int i = 0; i < personCount; i++) {
 			Person person = pList.get(i);
-			person.init();
 			person.arrivalTime = Math.abs(person.r - sList[stairSelected[i]][0]) +  Math.abs(person.c - sList[stairSelected[i]][1]);
 			
 			list[stairSelected[i]].add(person);
