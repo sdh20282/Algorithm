@@ -118,50 +118,19 @@ public class Solution {
 	static int processDown(ArrayList<Person> list, int height) {
 		Collections.sort(list);
 		
-		int time = list.get(0).arrivalTime;
-		int size = list.size();
+		int size = list.size() + 3;
+		int[] D = new int[size];
 		
-		int ingCnt = 0, cCnt = 0;
-		Person person = null;
-		
-		while (true) {
-			for (int i = 0; i < size; i++) {
-				person = list.get(i);
-				
-				if (person.status == C) {
-					continue;
-				}
-				
-				else if (person.arrivalTime == time) {
-					person.status = W;
-				}
-				
-				else if (person.status == W && ingCnt < 3) {
-					person.status = D;
-					person.downCnt = 1;
-					ingCnt += 1;
-				}
-				
-				else if (person.status == D) {
-					if (person.downCnt == height) {
-						person.status = C;
-						ingCnt -= 1;
-						cCnt += 1;
-					}
-					
-					else {
-						person.downCnt += 1;
-					}
-				}
-			}
+		for (int i = 3; i < size; i++) {
+			Person person = list.get(i - 3);
 			
-			if (cCnt == size) {
-				break;
+			if (D[i - 3] <= person.arrivalTime + 1) {
+				D[i] = person.arrivalTime + height + 1;
+			} else {
+				D[i] = D[i - 3] + height;
 			}
-			
-			time += 1;
 		}
 		
-		return time;
+		return D[size - 1];
 	}
 }
