@@ -11,7 +11,6 @@ function solution(board) {
     return false;
   }
 
-  let answer = Infinity;
   const costs = new Array(N).fill(0).map(_ => new Array(N).fill(Infinity));
   const q = [];
   let qIdx = 0;
@@ -32,7 +31,6 @@ function solution(board) {
     const [r, c, cnt, dir] = q[qIdx];
 
     if (r === N - 1 && c === N - 1) {
-      answer = Math.min(answer, cnt);
       qIdx += 1;
 
       continue;
@@ -46,12 +44,15 @@ function solution(board) {
         continue;
       }
 
-      costs[nr][nc] = ncnt;
+      if (ncnt < costs[nr][nc]) {
+        costs[nr][nc] = ncnt;
+      }
+
       q.push([nr, nc, ncnt, d]);
     }
 
     qIdx += 1;
   }
 
-  return answer;
+  return costs[N - 1][N - 1];
 }
